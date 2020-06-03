@@ -12,8 +12,19 @@ const Layout = ({
 }) => {
 	console.log(`${JSON.stringify(altTheme)} has been provided as the theme for this page, ${path}`);
 
+	let pageTheme = theme;
+
+	console.log(`Theme for ${path} has been set as ${JSON.stringify(pageTheme)}`);
+
+	if (altTheme) {
+		console.log(`Alt theme for ${path} has been provided, setting pageTheme to ${altTheme}`);
+		pageTheme = altTheme;
+	}
+
+	console.log(`Theme for ${path} has now been set as ${JSON.stringify(pageTheme)}`);
+
 	return (
-		<ThemeProvider theme={altTheme || theme}>
+		<ThemeProvider theme={pageTheme}>
 			<Fragment>
 				<Global
 					styles={{
