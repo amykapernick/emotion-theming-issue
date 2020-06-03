@@ -20,9 +20,12 @@ const LandingPageTemplate = (data) => {
 
 	return (
 		<Layout {...{ altTheme }}>
-			<h1>Click links between pages</h1>
-			<a href="/business">Page should have light version of logo</a><br/>
-			<a href="/">Page should have dark version of logo</a>
+			<h1>{data.data.landingPage.title}</h1>
+			<p><a href="/">Link to Homepage (should have dark version of logo)</a></p>
+			<p><a href="/business">Link to Business page (should have light version of logo)</a></p>
+			<p><a href="/schools">Link to Schools page (should have light version of logo)</a></p>
+			<p><a href="/homes">Link to Homes page (should have light version of logo)</a></p>
+			<p><a href="/partners">Link to Partners page (should have dark version of logo)</a></p>
 		</Layout>
 	);
 };

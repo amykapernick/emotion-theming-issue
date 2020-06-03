@@ -13,6 +13,8 @@ const Layout = ({
 		<Fragment>
 			<Header />
 			<Main>{children}</Main>
+			<h2>Theme Prop</h2>
+			<pre>{JSON.stringify(theme)}</pre>
 		</Fragment>
 	</ThemeProvider>
 );
