@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import Logo from '../../img/logo.svg';
 
 export const Head = styled.header`
-	background: #0893D2;
+	background: ${(props) => props.theme.colours.themes.header.colour};
 `;
 
 export const HeaderLogo = styled(Logo)`
