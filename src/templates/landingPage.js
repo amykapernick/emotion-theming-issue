@@ -7,24 +7,43 @@ import theme from '../styles/theme';
 import appThemes from '../styles/appThemes';
 
 const LandingPageTemplate = (data) => {
-	const pageTheme = data.pageContext.themeId;
+	const pageTheme = data.pageContext.themeId,
 
-	let altTheme = false;
+		// console.log(`initial theme is ${JSON.stringify(theme)}`);
 
-	console.log(`initial theme is ${JSON.stringify(theme)}`);
+		// if (appThemes.hasOwnProperty(pageTheme)) {
+		// 	console.log(`${data.location.pathname} has the custom theme of ${data.pageContext.themeId}, using it`);
+		// 	altTheme = theme;
+		// 	Object.keys(appThemes[pageTheme]).forEach((section) => {
+		// 		altTheme.colours.themes[section] = appThemes[pageTheme][section];
+		// 	});
+		// } else {
+		// 	console.log(`${data.location.pathname} does not have the custom theme of ${data.pageContext.themeId}, using the default theme`);
+		// 	console.log(`alt theme is ${JSON.stringify(altTheme)}`);
+		// }
 
-	if (appThemes.hasOwnProperty(pageTheme)) {
-		console.log(`${data.location.pathname} has the custom theme of ${data.pageContext.themeId}, using it`);
-		altTheme = theme;
-		Object.keys(appThemes[pageTheme]).forEach((section) => {
-			altTheme.colours.themes[section] = appThemes[pageTheme][section];
-		});
-	} else {
-		console.log(`${data.location.pathname} does not have the custom theme of ${data.pageContext.themeId}, using the default theme`);
-		console.log(`alt theme is ${JSON.stringify(altTheme)}`);
-	}
+		// console.log(`theme for ${data.location.pathname} is now ${JSON.stringify(altTheme)}`);
 
-	console.log(`theme for ${data.location.pathname} is now ${JSON.stringify(altTheme)}`);
+	 getSectionStyles = (pageTheme) => Object.keys(appThemes[pageTheme]).reduce((sections, section) => ({
+			...sections,
+			[section]: {
+			  ...appThemes[pageTheme][section],
+			},
+		  }), {}),
+	   getPageThemes = (pageTheme) => {
+			if (appThemes.hasOwnProperty(pageTheme)) {
+		  return {
+					...theme,
+					colours: {
+			  ...theme.colours,
+			  themes: getSectionStyles(pageTheme),
+					},
+		  };
+			}
+		  return theme;
+	  },
+
+	   altTheme = getPageThemes(pageTheme);
 
 	return (
 		<Layout {...{ altTheme, path: data.location.pathname }}>
