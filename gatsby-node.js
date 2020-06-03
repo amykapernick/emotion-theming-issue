@@ -33,7 +33,9 @@ exports.createPages = ({ actions, graphql }) => {
 
 
 			data.allLandingPage.edges.forEach((page) => {
-				let slug = page.node.id.replace(`landingPage-`, ``);
+				let slug = page.node.id.replace(`landingPage-`, ``),
+					themeId = page.node.id.replace(`landingPage-`, ``);
+
 				if (RegExp(/homepage/).test(page.node.id)) {
 					slug = `/`;
 				}
@@ -43,7 +45,7 @@ exports.createPages = ({ actions, graphql }) => {
 					component: path.resolve(`src/templates/landingPage.js`),
 					context: {
 						id: page.node.id,
-						themeId: page.node.id.replace(`landingPage-`, ``)
+						themeId
 					}
 				});
 			});
