@@ -4,6 +4,9 @@ module.exports = {
 			header: {
 				lightLogo: false,
 				colour: `#f15C5B`
+			},
+			otherProperty: {
+				exists: true
 			}
 		}
 	}

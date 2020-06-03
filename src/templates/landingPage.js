@@ -9,7 +9,7 @@ import appThemes from '../styles/appThemes';
 const LandingPageTemplate = (data) => {
 	const pageTheme = data.pageContext.themeId;
 
-	let altTheme;
+	let altTheme = false;
 
 	console.log(`initial theme is ${JSON.stringify(theme)}`);
 
