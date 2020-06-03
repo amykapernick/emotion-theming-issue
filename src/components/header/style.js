@@ -9,7 +9,7 @@ export const Head = styled.header`
 export const HeaderLogo = styled(Logo)`
 
 	.name {
-		fill: #000;
-		fill: ${(props) => (props.theme.colours.themes.header.lightLogo === true && `#fff`)};
+		fill: ${(props) => (props.theme.colours.themes.header.lightLogo ? `#fff` : `#000`)};
+
 	}
 `;

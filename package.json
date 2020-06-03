@@ -5,7 +5,8 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "gatsby develop",
-    "build": "gatsby build"
+    "build": "gatsby build",
+    "info": "gatsby info --clipboard"
   },
   "keywords": [],
   "author": "AimHigher Web Design <amy@aimhigherweb.design> (https://aimhigherweb.design)",
