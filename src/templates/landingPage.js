@@ -11,7 +11,7 @@ const LandingPageTemplate = (data) => {
 
 	let altTheme;
 
-	if (appThemes[pageTheme]) {
+	if (appThemes.hasOwnProperty(pageTheme)) {
 		altTheme = theme;
 		Object.keys(appThemes[pageTheme]).forEach((section) => {
 			altTheme.colours.themes[section] = appThemes[pageTheme][section];
