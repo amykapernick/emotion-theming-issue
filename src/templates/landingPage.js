@@ -11,15 +11,24 @@ const LandingPageTemplate = (data) => {
 
 	let altTheme;
 
+	console.log(`initial theme is ${JSON.stringify(theme)}`);
+
 	if (appThemes.hasOwnProperty(pageTheme)) {
+		console.log(`${data.path} has the custom theme of ${data.pageContext.themeId}, using it`);
+		console.log(data);
 		altTheme = theme;
 		Object.keys(appThemes[pageTheme]).forEach((section) => {
 			altTheme.colours.themes[section] = appThemes[pageTheme][section];
 		});
+	} else {
+		console.log(`${data.path} does not have the custom theme of ${data.pageContext.themeId}, using the default theme`);
+		console.log(`alt theme is ${JSON.stringify(altTheme)}`);
 	}
 
+	console.log(`theme for ${data.path} is now ${JSON.stringify(altTheme)}`);
+
 	return (
-		<Layout {...{ altTheme }}>
+		<Layout {...{ altTheme, path: data.path }}>
 			<h1>{data.data.landingPage.title}</h1>
 			<p><a href="/">Link to Homepage (should have dark version of logo)</a></p>
 			<p><a href="/business">Link to Business page (should have light version of logo)</a></p>

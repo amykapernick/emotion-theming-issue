@@ -8,29 +8,33 @@ import { Main } from './style';
 import theme from '../../styles/theme';
 
 const Layout = ({
-	children, altTheme
-}) => (
-	<ThemeProvider theme={altTheme || theme}>
-		<Fragment>
-			<Global
-				styles={{
-					head: {
-						display: `block !important`,
-					},
-					'head style': {
-						display: `block !important`,
-						fontFamily: `monospace`,
-						width: `80vw`,
-						padding: `20px 40px`
-					}
-				}}
-			/>
-			<Header />
-			<Main>{children}</Main>
-			<h2>Theme Prop</h2>
-			<pre>{JSON.stringify(theme)}</pre>
-		</Fragment>
-	</ThemeProvider>
-);
+	children, altTheme, path
+}) => {
+	console.log(`${JSON.stringify(altTheme)} has been provided as the theme for this page, ${path}`);
+
+	return (
+		<ThemeProvider theme={altTheme || theme}>
+			<Fragment>
+				<Global
+					styles={{
+						head: {
+							display: `block !important`,
+						},
+						'head style': {
+							display: `block !important`,
+							fontFamily: `monospace`,
+							width: `80vw`,
+							padding: `20px 40px`
+						}
+					}}
+				/>
+				<Header />
+				<Main>{children}</Main>
+				<h2>Theme Prop</h2>
+				<pre>{JSON.stringify(theme)}</pre>
+			</Fragment>
+		</ThemeProvider>
+	);
+};
 
 export default Layout;
